@@ -21,6 +21,7 @@ public class UserRegistrationHappyPath {
     public static void main(String[] args) {
         UserRegistrationHappyPath u = new UserRegistrationHappyPath();
         u.testUserRegistrationHappyPath();
+
     }
 
     @Test
@@ -32,7 +33,7 @@ public class UserRegistrationHappyPath {
 
         driver.get(baseUrl);
 
-        UserAccount u = UserAccount.generateUserAccountFromDatestring("2018-01-04-024");
+        UserAccount u = UserAccount.generateUserAccountFromDatestring(UserAccount.generateDateString());
 
         DefaultPage mainPage = new DefaultPage(driver);
         mainPage.click_menubar_SignIn();

@@ -1,5 +1,6 @@
-package com.demoqa;
+package com.demoqa.workflows;
 
+import com.demoqa.models.UserAccount;
 import com.demoqa.pages.DefaultPage;
 import com.demoqa.pages.RegistrationPage;
 import org.apache.commons.io.FileUtils;
@@ -12,7 +13,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class UserAccountCreation {
+
     public static void main(String[] args) {
+        UserAccountCreation u = new UserAccountCreation();
+        u.doUserAccountCreation();
+    }
+
+    public void doUserAccountCreation() {
         String baseUrl = "http://demoqa.com/";
         SeleniumHandle handle = new SeleniumHandle();
         handle.setUp();
@@ -21,13 +28,16 @@ public class UserAccountCreation {
         driver.get(baseUrl);
 
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String screenshotFilename = this.getClass().getSimpleName() + "-screenshot.png";
+        System.out.println("Saving screenshot '" + screenshotFilename + "'");
         try {
-            FileUtils.copyFile(scrFile, new File("screenshot.png"));
+            FileUtils.copyFile(scrFile, new File(screenshotFilename));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        UserAccount u = UserAccount.generateUserAccountFromDatestring("2018-01-04-015");
+        UserAccount u = UserAccount.generateUserAccountFromDatestring(UserAccount.generateDateString());
 
         DefaultPage defaultPage = new DefaultPage(driver);
         defaultPage.click_Registration();
@@ -49,6 +59,8 @@ public class UserAccountCreation {
 
         driver.close();
         driver.quit();
+
+        System.out.println("Registration complete for " + u.getUsername());
 
     }
 }

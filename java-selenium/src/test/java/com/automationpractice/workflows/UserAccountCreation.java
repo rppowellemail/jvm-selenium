@@ -26,7 +26,7 @@ public class UserAccountCreation {
 
         driver.get(baseUrl);
 
-        UserAccount u = UserAccount.generateUserAccountFromDatestring("2018-01-04-021");
+        UserAccount u = UserAccount.generateUserAccountFromDatestring(UserAccount.generateDateString());
 
         DefaultPage mainPage = new DefaultPage(driver);
         mainPage.click_menubar_SignIn();
@@ -54,7 +54,7 @@ public class UserAccountCreation {
         assert(myAccountPage.get_page_heading() == "My Account");
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String f = this.getClass().getSimpleName() + "-MyAccounts-screenshot.png";
+        String f = this.getClass().getSimpleName() + "_" + u.getLogin() + "_MyAccounts-screenshot.png";
         System.out.println("Saving screenshot '" + f + "'");
         try {
             FileUtils.copyFile(scrFile, new File(f));
@@ -68,7 +68,7 @@ public class UserAccountCreation {
         assert(myAccountPage.get_page_heading() == "My Addresses");
 
         scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        f = this.getClass().getSimpleName() + "-MyAddresses-screenshot.png";
+        f = this.getClass().getSimpleName() + "_" + u.getLogin() + "_MyAddresses-screenshot.png";
         System.out.println("Saving screenshot '" + f + "'");
         try {
             FileUtils.copyFile(scrFile, new File(f));

@@ -48,7 +48,7 @@ public class RegistrationPage {
         HashMap<String, WebElement> checkboxhash = new HashMap<>();
         for (WebElement checkbox : checkboxes) {
             String k = checkbox.getAttribute("value");
-            System.out.println("Found: "+k);
+            // System.out.println("Found Hobby checkbox: "+k);
             checkboxhash.put(k, checkbox);
         }
 

@@ -1,5 +1,10 @@
 package com.automationpractice.models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
 public class UserAccount {
     public String login;
     public String password;
@@ -12,11 +17,19 @@ public class UserAccount {
     public String postcode;
     public String phonenumber;
 
+    public static String generateDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'HH-mm-ss");
+        Random r = new Random();
+        return dateFormat.format(new Date()) + "-" + String.format("%04d", r.nextInt(10000));
+    }
+
     public static UserAccount generateUserAccountFromDatestring(String datestring) {
         UserAccount u = new UserAccount();
         u.setLogin("test-"+datestring);
         u.setEmail(datestring + "@test.com");
-        u.setPassword("password-"+datestring);
+        // password not to be more than 32 characters long
+        String password = "password-"+datestring;
+        u.setPassword(password.substring(0,Math.min(32, password.length())));
         u.setFirstname("test");
         u.setLastname("test");
         u.setAddress1("12345 Test");

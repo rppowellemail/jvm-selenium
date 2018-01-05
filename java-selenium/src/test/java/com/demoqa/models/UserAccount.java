@@ -1,4 +1,9 @@
-package com.demoqa;
+package com.demoqa.models;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 public class UserAccount {
     public String firstname;
@@ -8,6 +13,12 @@ public class UserAccount {
     public String username;
     public String email;
     public String password;
+
+    public static String generateDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'HH-mm-ss");
+        Random r = new Random();
+        return dateFormat.format(new Date()) + "-" + String.format("%04d", r.nextInt(10000));
+    }
 
     public static UserAccount generateUserAccountFromDatestring(String datestring) {
         UserAccount u = new UserAccount();
