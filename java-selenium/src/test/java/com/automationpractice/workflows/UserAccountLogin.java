@@ -48,7 +48,7 @@ public class UserAccountLogin {
         myAddressesPage.iterate_addresses();
 
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String f = this.getClass().getSimpleName() + "-screenshot.png";
+        String f = this.getClass().getSimpleName() + "_" + u.getLogin() + "_screenshot.png";
         System.out.println("Saving screenshot '" + f + "'");
         try {
             FileUtils.copyFile(scrFile, new File(f));
