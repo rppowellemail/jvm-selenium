@@ -12,3 +12,5 @@ This project is dependent on having the environment setup for:
 
 This was verified working for:
 * Chrome Version 63.0.3239.132 / chromedriver 2.34
+
+See READMEs for additional details. 
