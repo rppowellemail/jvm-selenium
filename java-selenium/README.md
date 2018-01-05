@@ -16,3 +16,5 @@ The classes under `pages` package implement a java-to-selenium type interface to
 
 When run, information is currently logged to console, and screenshots are saved to local project directory.
 
+This was verified working for:
+* Chrome Version 63.0.3239.132 / chromedriver 2.34
