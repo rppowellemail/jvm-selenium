@@ -6,7 +6,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import utils.SeleniumHandle;
+import utils.WebDriverFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,9 +21,7 @@ public class UserAccountLogin {
     public void doUserAccountLogin() {
 
         String baseUrl = "http://automationpractice.com/index.php";
-        SeleniumHandle handle = new SeleniumHandle();
-        handle.setUp();
-        WebDriver driver = handle.driver;
+        WebDriver driver = WebDriverFactory.createWebDriver();
 
         driver.get(baseUrl);
 

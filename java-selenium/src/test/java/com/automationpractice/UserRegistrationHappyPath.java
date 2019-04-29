@@ -3,16 +3,9 @@ package com.automationpractice;
 
 import com.automationpractice.models.UserAccount;
 import com.automationpractice.pages.*;
-import org.apache.commons.io.FileUtils;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import utils.SeleniumHandle;
-
-import java.io.File;
-import java.io.IOException;
+import utils.WebDriverFactory;
 
 import static org.junit.Assert.assertEquals;
 
@@ -27,9 +20,7 @@ public class UserRegistrationHappyPath {
     @Test
     public void testUserRegistrationHappyPath() {
         String baseUrl = "http://automationpractice.com/index.php";
-        SeleniumHandle handle = new SeleniumHandle();
-        handle.setUp();
-        WebDriver driver = handle.driver;
+        WebDriver driver = WebDriverFactory.createWebDriver();
 
         driver.get(baseUrl);
 
