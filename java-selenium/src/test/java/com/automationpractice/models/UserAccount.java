@@ -18,7 +18,7 @@ public class UserAccount {
     public String phonenumber;
 
     public static String generateDateString() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'HH-mm-ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss");
         Random r = new Random();
         return dateFormat.format(new Date()) + "-" + String.format("%04d", r.nextInt(10000));
     }
